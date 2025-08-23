@@ -13,19 +13,7 @@ Features
 
 Project Structure
 
-├── examples          -> short, feature-specific sample apps
-│   ├── app.js        -> complete example
-│   ├── button.js
-│   ├── command.js
-│   ├── modal.js
-│   ├── selectMenu.js
-├── .env.sample       -> sample environment variables file
-├── app.js            -> main entry point
-├── commands.js       -> slash commands and helper functions
-├── utils.js          -> utility functions and enums
-├── package.json
-├── README.md
-└── .gitignore
+<img width="1402" height="574" alt="image" src="https://github.com/user-attachments/assets/5eb997bb-6adc-4727-bca4-9ffb232743cf" />
 
 
 ⸻
