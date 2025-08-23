@@ -10,6 +10,7 @@ import {
 } from 'discord-interactions';
 import { getRandomEmoji, DiscordRequest } from './utils.js';
 import { getShuffledOptions, getResult } from './game.js';
+import { handleSummaryCommand } from './handle/summary.js';
 
 // Create an express app
 const app = express();
@@ -22,9 +23,10 @@ const activeGames = {};
  * Interactions endpoint URL where Discord will send HTTP requests
  * Parse request body and verifies incoming requests using discord-interactions package
  */
-app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async function (req, res) {
+app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async function(req, res) {
   // Interaction id, type and data
-  const { id, type, data } = req.body;
+  const interaction = req.body;
+  const { id, type, data } = interaction;
 
   /**
    * Handle verification requests
@@ -51,12 +53,40 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
             {
               type: MessageComponentTypes.TEXT_DISPLAY,
               // Fetches a random emoji to send from a helper function
-              content: `hello world ${getRandomEmoji()}`
+              content: `hello beiyue ${getRandomEmoji()}`
             }
           ]
         },
       });
     }
+
+
+ if (name === 'summary') {
+      return handleSummaryCommand(interaction, res);
+    }
+//     if (name === 'summary') {
+//       return handleSummaryCommand(interaction, client, res);
+//       return res.send({
+//         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+//         data: {
+//           flags: InteractionResponseFlags.IS_COMPONENTS_V2,
+//           components: [
+//             {
+//               type: MessageComponentTypes.TEXT_DISPLAY,
+//               content: `📌 **Channel Summary**  
+// - Deadline: September 15  
+// - Next meeting: Tuesday at 10 AM  
+// - Alice → design draft  
+// - Bob → backend integration  
+// - Pending: finalize API docs`
+//             }
+//           ]
+//         }
+//       });
+//     }
+
+
+
 
     console.error(`unknown command: ${name}`);
     return res.status(400).json({ error: 'unknown command' });
