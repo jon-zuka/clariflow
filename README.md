@@ -1,24 +1,13 @@
-ClariFlow
+# ClariFlow
 
 ClariFlow is a Discord AI Bot designed to tackle information overload in Discord channels. It quickly summarizes messages, helping users save time and focus on key points.
 
-⸻
-
-Features
+## Features
 	•	Message Summarization – Condenses long Discord threads into concise key points.
 	•	JSON Input / Markdown Output – Converts messages to JSON for AI processing, then outputs human-readable Markdown summaries.
 	•	Batch Processing – Handles multiple messages efficiently while respecting API input limits.
 
-⸻
-
-Project Structure
-
-<img width="1402" height="574" alt="image" src="https://github.com/user-attachments/assets/5eb997bb-6adc-4727-bca4-9ffb232743cf" />
-
-
-⸻
-
-Installation
+## Development
 	1.	Clone the repository:
 
 git clone https://github.com/jon-zuka/clariflow
@@ -39,40 +28,20 @@ DISCORD_PUBLIC_KEY=your_public_key
 OPENAI_API_KEY=your_openai_key
 OPENAI_MODEL=gpt-5-turbo
 
-
-⸻
-
-Running the Bot Locally
-	1.	Register Slash commands:
+	4.	Register Slash commands:
 
 npm run register
 
-	2.	Start the bot:
+	5.	Start the bot:
 
 node app.js
 
 ⚙️ Optional: use nodemon for automatic restarts during development.
 
-	3.	Set up interactivity with a public endpoint:
+	6.	Set up interactivity with a public endpoint:
 	•	Install ngrok and run:
 
 ngrok http 3000
 
 	•	Copy the HTTPS forwarding URL and append /interactions
 	•	Paste it into your Discord app’s Interactions Endpoint URL
-
-⸻
-
-Usage
-
-Once running, ClariFlow will:
-	1.	Extract messages from specified Discord channels.
-	2.	Summarize messages within character limits.
-	3.	Output summaries in Markdown format for easy reading.
-
-⸻
-
-Additional Resources
-	•	Discord API Documentation
-	•	ngrok Documentation
-	•	Discord Developers Server
